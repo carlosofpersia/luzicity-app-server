@@ -136,6 +136,7 @@ app.get('/auth/google/callback',
 app.get('/profile', function (req, res) {
     console.log('app.get.profile');
     console.log(session.profile.id +' - '+ session.profile.name);
+    res.contentType('application/json');
     res.send(JSON.stringify(session.profile));
 });
 
