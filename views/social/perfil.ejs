@@ -1,0 +1,22 @@
+<h1>Perfil</h1>
+<% if(existemUsuarios) { %>
+<table border="1" width="100%">
+    <tr>
+        <th colspan="4">Usuario</th>
+    </tr>
+    <tr>
+    	<th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+    </tr>
+    <% for(var i in usuarioView) { %>
+    <tr>
+        <td><%=usuarioView[i]._id %></td>
+        <td><%=usuarioView[i].tx_nome %></td>
+        <td><%=usuarioView[i].tx_email %>...</td>
+    </tr>
+    <% } %>
+</table>
+<% } else {%>
+<p>Atencao nao existe usuario</p>
+<% } %>
