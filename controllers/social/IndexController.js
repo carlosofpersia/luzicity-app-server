@@ -1,10 +1,50 @@
 
 //IndexController
 
+var AbstractController = require( __base + '/library/abstract/AbstractController');
+
+var session = require('express-session');
+
 //construct
-var IndexController = module.exports = function( app ) {
+var IndexController = module.exports = function() {
     console.log('constructor -> IndexController');
-    this.app = app;
+};
+IndexController.prototype = new AbstractController();
+IndexController.prototype.constructor = IndexController;
+
+IndexController.prototype.homeAction = function() {
+
+    console.log('IndexController.prototype.homeAction');
+    (this.app).get('/social/index/home', function (req, res) {
+		sess = req.session;
+	    var params = {
+	    	user: {
+	    		displayName:'Antonio Donizildo', 
+	    		mail:sess.mail, 
+	    		mail2:sess.mail2,
+			}
+		};
+
+var profile = session.profile;
+if(    profile    != undefined 
+	&& profile.id != undefined ) {
+
+	params.user.googleId = profile.id;
+	params.user.googleName = profile.name;
+	params.user.googleEmail = profile.email;
+}
+
+		console.log('app.get.social.home');
+	    /*
+	    //saida em json
+	    res.contentType('application/json');
+	    res.send(JSON.stringify(params));
+	    */
+	    //saida em html ejs
+	    res.render('social/index', {user: params.user});
+
+	    //res.render('social/index', {user: params.user});
+	});
 };
 
 IndexController.prototype.mailAction = function() {
@@ -17,7 +57,7 @@ IndexController.prototype.mailAction = function() {
     	console.log('app.get.social.mail.get');
     	sess.mail = 'carloseduardophp@gmail.com';
 		res.contentType('text/html');
-	    res.send('Mail-method-get get a random mail session: ' + sess.mail);
+	    res.send('Mail-method-get get a my mail session: ' + sess.mail);
 		//donload
 	    //res.end('<b>ok</b>');
 	})
@@ -35,32 +75,6 @@ IndexController.prototype.mailAction = function() {
 	});
 };
 
-IndexController.prototype.homeAction = function() {
-
-    console.log('IndexController.prototype.homeAction');
-    (this.app).get('/social/index/home', function (req, res) {
-		sess = req.session;
-		console.log(sess.mail + ' [1]');
-
-	    var params = {
-	    	user: {
-	    		displayName:'Carlos Eduardo 5', 
-	    		mail:sess.mail, 
-	    		mail2:sess.mail2,
-	}
-};
-		console.log('app.get.social.home');
-	    /*
-	    //saida em json
-	    res.contentType('application/json');
-	    res.send(JSON.stringify(params));
-	    */
-	    //saida em html ejs
-	    res.render('social/index', {user: params.user});
-
-	    //res.render('social/index', {user: params.user});
-	});
-};
 
 IndexController.prototype.listAction = function() {
 

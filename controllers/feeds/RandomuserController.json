@@ -1,0 +1,30 @@
+/**
+ * @file ./feeds/controllers/RandomuserController.js
+ */
+
+/**********/
+//console.log(__dirname);
+//console.log(process.argv[1]);
+
+var AbstractController = require( __base + '/library/abstract/AbstractController' );
+
+/**********/
+
+var RandomuserController = module.exports = function() {
+    console.log('constructor -> RandomuserController');
+};
+RandomuserController.prototype = new AbstractController();
+RandomuserController.prototype.constructor = RandomuserController;
+
+RandomuserController.prototype.feedsAction = function( params ) {
+	try {
+
+		
+
+
+    } catch ( err ) {
+        console.log( 'RandomuserController: ' + err );
+        throw new Error( 'RandomuserController: ' + err ); 
+    }
+
+};

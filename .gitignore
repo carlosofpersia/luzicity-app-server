@@ -3,3 +3,5 @@
 .git/
 nbproject/
 node_modules/
+.vs/
+npm-debug.log

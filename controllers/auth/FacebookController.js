@@ -1,6 +1,6 @@
 
 
-var FacebookStrategy = require('passport-facebook').Strategy
+//var FacebookStrategy = require('passport-facebook').Strategy
 
 var AuthFacebook = {
     

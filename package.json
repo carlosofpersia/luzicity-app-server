@@ -1,10 +1,12 @@
 {
-  "name": "passport-google-oauth2-example",
+  "name": "luzicity-app",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
     "ejs": ">= 0.0.0",
+    "express": ">= 0.0.0",
+    "firebase": "^4.8.0",
     "passport": ">= 0.0.0",
-    "passport-google-oauth2": ">= 0.0.0"
+    "passport-google-oauth2": ">= 0.0.0",
+    "pm2": ">= 0.0.0"
   }
 }
